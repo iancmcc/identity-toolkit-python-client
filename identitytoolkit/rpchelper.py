@@ -25,7 +25,7 @@ import urllib2
 import httplib2
 from oauth2client import client
 from oauth2client import crypt
-import simplejson
+import json as simplejson
 
 import errors
 
@@ -250,6 +250,6 @@ class RpcHelper(object):
             raise errors.GitkitClientError(error['message'])
           else:
             raise errors.GitkitServerError(error['message'])
-    except simplejson.JSONDecodeError:
+    except ValueError:
       pass
     raise errors.GitkitServerError('null error code from Gitkit server')
